@@ -1,0 +1,4 @@
+rootProject.name = 'notation_translator'
+include 'cli'
+include 'core'
+
