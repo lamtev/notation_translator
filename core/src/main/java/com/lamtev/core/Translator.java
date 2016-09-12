@@ -47,7 +47,7 @@ public class Translator {
         integerPart.clear();
         while (decIntegerPart != 0) {
             integerPart.add(0, decIntegerPart%toNotation);
-            decIntegerPart/=toNotation;
+            decIntegerPart /= toNotation;
         }
     }
 
