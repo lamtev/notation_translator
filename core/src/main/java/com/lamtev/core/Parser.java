@@ -9,26 +9,24 @@ public class Parser {
     private String number;
     private ArrayList<Integer> integerPart;
     private ArrayList<Integer> fractionPart;
-    private static final Map<Character, Integer> tableOfCharacters;
-    static {
-        tableOfCharacters = new HashMap<>();
-        tableOfCharacters.put('0', 0);
-        tableOfCharacters.put('1', 1);
-        tableOfCharacters.put('2', 2);
-        tableOfCharacters.put('3', 3);
-        tableOfCharacters.put('4', 4);
-        tableOfCharacters.put('5', 5);
-        tableOfCharacters.put('6', 6);
-        tableOfCharacters.put('7', 7);
-        tableOfCharacters.put('8', 8);
-        tableOfCharacters.put('9', 9);
-        tableOfCharacters.put('A', 10);
-        tableOfCharacters.put('B', 11);
-        tableOfCharacters.put('C', 12);
-        tableOfCharacters.put('D', 13);
-        tableOfCharacters.put('E', 14);
-        tableOfCharacters.put('F', 15);
-    }
+    private static final Map<Character, Integer> tableOfCharacters = new HashMap<Character, Integer>() {{
+        put('0', 0);
+        put('1', 1);
+        put('2', 2);
+        put('3', 3);
+        put('4', 4);
+        put('5', 5);
+        put('6', 6);
+        put('7', 7);
+        put('8', 8);
+        put('9', 9);
+        put('A', 10);
+        put('B', 11);
+        put('C', 12);
+        put('D', 13);
+        put('E', 14);
+        put('F', 15);
+    }};
 
     Parser(String number) {
         this.number = number;
