@@ -6,23 +6,18 @@ public class Translator {
 
     private ArrayList<Integer> integerPart;
     private ArrayList<Integer> fractionPart;
-    private int originNotation;
+    private int originalNotation;
     private int newNotation;
-    private Integer decIntegerPart;
-    private Integer decFractionPart;
+    private Integer decIntegerPart = 0;
+    private Integer decFractionPart = 0;
 
-    Translator(ArrayList<Integer> integerPart, ArrayList<Integer> fractionPart, int originNotation, int newNotation) {
+    Translator(ArrayList<Integer> integerPart, ArrayList<Integer> fractionPart, int originalNotation, int newNotation) {
         this.integerPart = integerPart;
         this.fractionPart = fractionPart;
-        this.originNotation = originNotation;
+        this.originalNotation = originalNotation;
         this.newNotation = newNotation;
-        decIntegerPart = 0;
-        decFractionPart = 0;
-    }
-
-    public void translate() {
-        translateIntegerPart();
-        //TODO translateFractionPart();
+        calculateDecIntegerPart();
+        calculateDecFractionPart();
     }
 
     public ArrayList<Integer> integerPart() {
@@ -33,36 +28,44 @@ public class Translator {
         return fractionPart;
     }
 
+    public void translate() {
+        translateIntegerPart();
+        translateFractionPart();
+    }
+
    private void translateIntegerPart() {
-        calculateDecIntegerPart();
-        translateIntegerPartToNewNotation();
+       integerPart.clear();
+       while (decIntegerPart != 0) {
+           integerPart.add(0, decIntegerPart % newNotation);
+           decIntegerPart /= newNotation;
+       }
     }
 
     private void calculateDecIntegerPart() {
         for (Integer x : integerPart) {
-            decIntegerPart *= originNotation;
+            decIntegerPart *= originalNotation;
             decIntegerPart += x;
         }
     }
 
-    private void translateIntegerPartToNewNotation() {
-        integerPart.clear();
-        while (decIntegerPart != 0) {
-            integerPart.add(0, decIntegerPart%newNotation);
-            decIntegerPart /= newNotation;
+    private void translateFractionPart() {
+        fractionPart.clear();
+        int iteration = 0;
+        while (iteration < 8) {
+            decFractionPart *= newNotation;
+            fractionPart.add(decFractionPart / (int) Math.pow(10, 8));
+            decFractionPart %= (int) Math.pow(10, 8);
+            ++iteration;
         }
     }
 
-    private void translateFractionPart() {
-        calculateDecFractionPart();
-        translateFractionPartToNewNotation();
-    }
-
     private void calculateDecFractionPart() {
-
+        for (Integer x : fractionPart) {
+            decFractionPart *= originalNotation;
+            decFractionPart += x;
+        }
+        Double fraction = decFractionPart / Math.pow(originalNotation, fractionPart.size());
+        decFractionPart = ((Double) (fraction * Math.pow(10, 8))).intValue();
     }
 
-    private void translateFractionPartToNewNotation() {
-
-    }
 }
