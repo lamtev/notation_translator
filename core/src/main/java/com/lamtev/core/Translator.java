@@ -6,16 +6,18 @@ public class Translator {
 
     private ArrayList<Integer> integerPart;
     private ArrayList<Integer> fractionPart;
-    private int fromNotation;
-    private int toNotation;
+    private int originNotation;
+    private int newNotation;
     private Integer decIntegerPart;
+    private Integer decFractionPart;
 
-    Translator(ArrayList<Integer> integerPart, ArrayList<Integer> fractionPart, int fromNotation, int toNotation) {
+    Translator(ArrayList<Integer> integerPart, ArrayList<Integer> fractionPart, int originNotation, int newNotation) {
         this.integerPart = integerPart;
         this.fractionPart = fractionPart;
-        this.fromNotation = fromNotation;
-        this.toNotation = toNotation;
+        this.originNotation = originNotation;
+        this.newNotation = newNotation;
         decIntegerPart = 0;
+        decFractionPart = 0;
     }
 
     public void translate() {
@@ -33,22 +35,34 @@ public class Translator {
 
    private void translateIntegerPart() {
         calculateDecIntegerPart();
-        translateIntegerPartToToNotation();
+        translateIntegerPartToNewNotation();
     }
 
     private void calculateDecIntegerPart() {
         for (Integer x : integerPart) {
-            decIntegerPart *= fromNotation;
+            decIntegerPart *= originNotation;
             decIntegerPart += x;
         }
     }
 
-    private void translateIntegerPartToToNotation() {
+    private void translateIntegerPartToNewNotation() {
         integerPart.clear();
         while (decIntegerPart != 0) {
-            integerPart.add(0, decIntegerPart%toNotation);
-            decIntegerPart /= toNotation;
+            integerPart.add(0, decIntegerPart%newNotation);
+            decIntegerPart /= newNotation;
         }
     }
 
+    private void translateFractionPart() {
+        calculateDecFractionPart();
+        translateFractionPartToNewNotation();
+    }
+
+    private void calculateDecFractionPart() {
+
+    }
+
+    private void translateFractionPartToNewNotation() {
+
+    }
 }
