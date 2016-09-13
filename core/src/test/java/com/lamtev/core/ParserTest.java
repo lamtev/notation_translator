@@ -6,11 +6,11 @@ import static org.junit.Assert.assertEquals;
 
 public class ParserTest {
 
-    private static final Parser parser = new Parser("12A90,FF01D");
+    private static final Parser PARSER = new Parser("12A90,FF01D");
 
     @Test
     public void testIntegerPart() {
-        ArrayList<Integer> integerPart = parser.integerPart();
+        ArrayList<Integer> integerPart = PARSER.integerPart();
         ArrayList<Integer> expectedIntegerPart = new ArrayList<Integer>() {{
             add(1);
             add(2);
@@ -23,7 +23,7 @@ public class ParserTest {
 
     @Test
     public void testFractionPart() {
-        ArrayList<Integer> fractionPart = parser.fractionPart();
+        ArrayList<Integer> fractionPart = PARSER.fractionPart();
         ArrayList<Integer> expectedFractionPart = new ArrayList<Integer>() {{
             add(15);
             add(15);
