@@ -1,8 +1,7 @@
 apply plugin: 'application'
 
-//mainClassName = 'com.lamtev.'
+mainClassName = 'com.lamtev.cli.Utility'
 
 dependencies {
-    testCompile group: 'junit', name: 'junit', version: '4.11'
     compile project(':core')
 }
