@@ -4,12 +4,12 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Parser {
+public class StringParser {
 
     private String number;
     private ArrayList<Integer> integerPart;
     private ArrayList<Integer> fractionPart;
-    private static final Map<Character, Integer> tableOfCharacters = new HashMap<Character, Integer>() {{
+    private static final Map<Character, Integer> TABLE_OF_DIGITS = new HashMap<Character, Integer>() {{
         put('0', 0);
         put('1', 1);
         put('2', 2);
@@ -28,10 +28,10 @@ public class Parser {
         put('F', 15);
     }};
 
-    Parser(String number) {
+    StringParser(String number) {
         this.number = number;
-        determineInteger();
-        determineFraction();
+        parseIntegerPart();
+        parseFractionPart();
     }
 
     public ArrayList<Integer> integerPart() {
@@ -42,24 +42,24 @@ public class Parser {
         return fractionPart;
     }
 
-    private void determineInteger() {
+    private void parseIntegerPart() {
         integerPart = new ArrayList<>();
         for (int i = 0; i < number.indexOf(','); ++i) {
             Character character = number.charAt(i);
-            integerPart.add(parseCharacter(character));
+            integerPart.add(parseDigit(character));
         }
     }
 
-    private void determineFraction() {
+    private void parseFractionPart() {
         fractionPart = new ArrayList<>();
         for (int i = number.indexOf(',') + 1; i < number.length(); ++i) {
             Character character = number.charAt(i);
-            fractionPart.add(parseCharacter(character));
+            fractionPart.add(parseDigit(character));
         }
     }
 
-    private Integer parseCharacter(Character character) {
-        return tableOfCharacters.get(character);
+    private Integer parseDigit(Character digit) {
+        return TABLE_OF_DIGITS.get(digit);
     }
 
 }
