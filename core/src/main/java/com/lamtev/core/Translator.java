@@ -11,7 +11,7 @@ public class Translator {
     private Integer decIntegerPart = 0;
     private Integer decFractionPart = 0;
 
-    Translator(ArrayList<Integer> integerPart, ArrayList<Integer> fractionPart, int originalNotation, int newNotation) {
+    public Translator(ArrayList<Integer> integerPart, ArrayList<Integer> fractionPart, int originalNotation, int newNotation) {
         this.integerPart = integerPart;
         this.fractionPart = fractionPart;
         this.originalNotation = originalNotation;

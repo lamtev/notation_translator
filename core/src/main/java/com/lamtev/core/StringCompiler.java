@@ -28,7 +28,7 @@ public class StringCompiler {
         put(15, "F");
     }};
 
-    StringCompiler(ArrayList<Integer> integerPart, ArrayList<Integer> fractionPart) {
+    public StringCompiler(ArrayList<Integer> integerPart, ArrayList<Integer> fractionPart) {
         this.integerPart = integerPart;
         this.fractionPart = fractionPart;
         number = "";

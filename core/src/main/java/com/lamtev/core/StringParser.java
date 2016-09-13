@@ -28,8 +28,10 @@ public class StringParser {
         put('F', 15);
     }};
 
-    StringParser(String number) {
+    public StringParser(String number) {
         this.number = number;
+        StringValidator stringValidator = new StringValidator(number);
+        stringValidator.validateString();
         parseIntegerPart();
         parseFractionPart();
     }
