@@ -1,0 +1,83 @@
+\include{settings}
+
+\begin{document}	% начало документа
+
+\include{titlepage}
+
+
+% Содержание
+\tableofcontents
+\newpage
+
+
+
+\section{Цель работы}
+
+
+\section{Программа работы}
+
+
+\section{Теоретическая информация}
+
+
+\section{Ход выполнения работы}
+
+\subsection{Список}
+
+\begin{itemize}
+\item первый элемент списка
+\item второй элемент списка
+\end{itemize}
+
+
+%\subsection{Картинка}
+
+%\begin{figure}[H]
+%	\begin{center}
+%		\includegraphics[scale=0.7]{pics/sample}
+%		\caption{название картинки} 
+%		\label{pic:pic_name} % название для ссылок внутри кода
+%	\end{center}
+%\end{figure}
+
+
+\subsection{Листинг}
+
+\captionof{lstlisting}{Utility.java} % для печати символ '_' требует выходной символ '\'
+\lstinputlisting[label=code:hello]{../cli/src/main/java/com/lamtev/notation_translator/cli/Utility.java}
+\parindent=1cm % командна \lstinputlisting сбивает параментры отступа
+Текст без отступа (следует за вставкой)
+
+Новый параграф
+
+\noindent Новый параграф с принудительно выключенным отступом
+
+
+\subsection{Частичный листинг}
+% настрока частичного ввода (требуется один раз)
+\makeatletter
+\def\lst@PlaceNumber{\llap{\normalfont
+                \lst@numberstyle{\the\lst@lineno}\kern\lst@numbersep}}
+\makeatother
+
+\captionof{lstlisting}{фрагмент Utility.java}
+\lstinputlisting[label=code:hello_mod, linerange={6-7}]{../cli/src/main/java/com/lamtev/notation_translator/cli/Utility.java}
+\parindent=1cm
+
+\subsection{Таблица}
+
+\begin{table}[H]
+	\begin{center}
+		\begin{tabular}{|l|l|}
+			\hline
+			top left & top right\\ \hline
+			bot left & bot right\\ \hline
+		\end{tabular}
+		\caption{ Название таблицы}
+		\label{tabular:tab_examp}
+	\end{center}
+\end{table}
+
+\section{Выводы}
+ Всё классно
+\end{document}

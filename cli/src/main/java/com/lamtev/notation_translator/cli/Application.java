@@ -1,9 +1,8 @@
-package com.lamtev.cli;
+package com.lamtev.notation_translator.cli;
 
-import static com.lamtev.cli.Helper.*;
-import com.lamtev.core.StringParser;
-import com.lamtev.core.Translator;
-import com.lamtev.core.StringCompiler;
+import com.lamtev.notation_translator.core.StringParser;
+import com.lamtev.notation_translator.core.Translator;
+import com.lamtev.notation_translator.core.StringCompiler;
 
 class Application {
 
@@ -22,7 +21,7 @@ class Application {
                 translate(args);
                 break;
             default:
-                printInvalidArguments();
+                Helper.printInvalidArguments();
         }
     }
 
@@ -31,22 +30,22 @@ class Application {
             case "-h":
             case "-help":
             case "--help":
-                printHelpInfo();
+                Helper.printHelpInfo();
                 break;
             case "-v":
             case "-version":
             case "--version":
-                printVersion();
+                Helper.printVersion();
                 break;
             default:
-                printInvalidArguments();
+                Helper.printInvalidArguments();
         }
     }
 
     private void translate(String[] args) {
         try {
             if (Integer.parseInt(args[1]) < 2 || Integer.parseInt(args[2]) > 16) {
-                printInvalidArguments();
+                Helper.printInvalidArguments();
                 return;
             }
             StringParser stringParser = new StringParser(args[0]);
@@ -60,7 +59,7 @@ class Application {
             StringCompiler stringCompiler = new StringCompiler(translator.integerPart(), translator.fractionPart());
             System.out.println(stringCompiler.number());
         } catch (RuntimeException e) {
-            printInvalidArguments();
+            Helper.printInvalidArguments();
         }
     }
 

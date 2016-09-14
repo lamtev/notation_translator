@@ -1,4 +1,4 @@
-package com.lamtev.cli;
+package com.lamtev.notation_translator.cli;
 
 public class Utility {
 

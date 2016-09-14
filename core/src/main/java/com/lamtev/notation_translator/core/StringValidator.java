@@ -1,4 +1,4 @@
-package com.lamtev.core;
+package com.lamtev.notation_translator.core;
 
 class StringValidator {
 
