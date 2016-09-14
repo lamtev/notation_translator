@@ -5,79 +5,72 @@
 \include{titlepage}
 
 
-% Содержание
+\hypertarget{toc}
 \tableofcontents
 \newpage
 
+\section*{Описание}
+\addcontentsline{toc}{section}{Описание}
+
+Приложение представляет из себя консольную утилиту, которая в виде аргументов командной строки получает входные данные и выводит результат на экран. 
+
+При запуске приложения с ключом -h (-help, --help) на экран будет выведена информация о том, как пользоваться данной утилитой. Программа ожидает 3 аргумента - исходное число; CC, в которой оно представлено; СС, в которой его необходимо представить. Выводом будет результат работы.
+
+\section*{Листинги}
+\addcontentsline{toc}{section}{Листинги}
+
+\subsection*{Ядро}
+\addcontentsline{toc}{subsection}{Ядро}
+
+\subsubsection*{Бизнес-логика}
+\addcontentsline{toc}{subsubsection}{Бизнес-логика}
+
+\captionof{lstlisting}{StringParser.java}
+\lstinputlisting[label=code:hello]{../core/src/main/java/com/lamtev/notation_translator/core/StringParser.java}
 
 
-\section{Цель работы}
+\captionof{lstlisting}{StringValidator.java}
+\lstinputlisting[label=code:hello]{../core/src/main/java/com/lamtev/notation_translator/core/StringValidator.java}
 
 
-\section{Программа работы}
+\captionof{lstlisting}{Translator.java}
+\lstinputlisting[label=code:hello]{../core/src/main/java/com/lamtev/notation_translator/core/Translator.java}
 
 
-\section{Теоретическая информация}
+\captionof{lstlisting}{StringCompiler.java}
+\lstinputlisting[label=code:hello]{../core/src/main/java/com/lamtev/notation_translator/core/StringCompiler.java}
+
+\subsubsection*{Модульные тесты}
+\addcontentsline{toc}{subsubsection}{Модульные тесты}
+
+\captionof{lstlisting}{StringParserTest.java}
+\lstinputlisting[label=code:hello]{../core/src/test/java/com/lamtev/notation_translator/core/StringParserTest.java}
 
 
-\section{Ход выполнения работы}
-
-\subsection{Список}
-
-\begin{itemize}
-\item первый элемент списка
-\item второй элемент списка
-\end{itemize}
+\captionof{lstlisting}{StringValidatorTest.java}
+\lstinputlisting[label=code:hello]{../core/src/test/java/com/lamtev/notation_translator/core/StringValidatorTest.java}
 
 
-%\subsection{Картинка}
-
-%\begin{figure}[H]
-%	\begin{center}
-%		\includegraphics[scale=0.7]{pics/sample}
-%		\caption{название картинки} 
-%		\label{pic:pic_name} % название для ссылок внутри кода
-%	\end{center}
-%\end{figure}
+\captionof{lstlisting}{TranslatorTest.java}
+\lstinputlisting[label=code:hello]{../core/src/test/java/com/lamtev/notation_translator/core/TranslatorTest.java}
 
 
-\subsection{Листинг}
+\captionof{lstlisting}{StringCompilerTest.java}
+\lstinputlisting[label=code:hello]{../core/src/test/java/com/lamtev/notation_translator/core/StringCompilerTest.java}
 
-\captionof{lstlisting}{Utility.java} % для печати символ '_' требует выходной символ '\'
+
+\subsection*{Консольное приложение}
+\addcontentsline{toc}{subsection}{Консольное приложение}
+
+\captionof{lstlisting}{Utility.java}
 \lstinputlisting[label=code:hello]{../cli/src/main/java/com/lamtev/notation_translator/cli/Utility.java}
-\parindent=1cm % командна \lstinputlisting сбивает параментры отступа
-Текст без отступа (следует за вставкой)
-
-Новый параграф
-
-\noindent Новый параграф с принудительно выключенным отступом
 
 
-\subsection{Частичный листинг}
-% настрока частичного ввода (требуется один раз)
-\makeatletter
-\def\lst@PlaceNumber{\llap{\normalfont
-                \lst@numberstyle{\the\lst@lineno}\kern\lst@numbersep}}
-\makeatother
+\captionof{lstlisting}{Application.java}
+\lstinputlisting[label=code:hello]{../cli/src/main/java/com/lamtev/notation_translator/cli/Application.java}
 
-\captionof{lstlisting}{фрагмент Utility.java}
-\lstinputlisting[label=code:hello_mod, linerange={6-7}]{../cli/src/main/java/com/lamtev/notation_translator/cli/Utility.java}
-\parindent=1cm
 
-\subsection{Таблица}
+\captionof{lstlisting}{Helper.java}
+\lstinputlisting[label=code:hello]{../cli/src/main/java/com/lamtev/notation_translator/cli/Helper.java}
 
-\begin{table}[H]
-	\begin{center}
-		\begin{tabular}{|l|l|}
-			\hline
-			top left & top right\\ \hline
-			bot left & bot right\\ \hline
-		\end{tabular}
-		\caption{ Название таблицы}
-		\label{tabular:tab_examp}
-	\end{center}
-\end{table}
-
-\section{Выводы}
- Всё классно
 \end{document}
