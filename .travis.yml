@@ -15,7 +15,7 @@ script:
   - docker run -v $TRAVIS_BUILD_DIR:/notation_translation lamtev/java /bin/bash -c " cd notation_translation && gradle build "
   - sudo chmod 777 ${TRAVIS_BUILD_DIR}/cli/build/distributions/cli-1.0-SNAPSHOT.tar
   - sudo chmod 777 ${TRAVIS_BUILD_DIR}/cli/build/distributions/cli-1.0-SNAPSHOT.zip
-  - docker run -v $TRAVIS_BUILD_DIR/report:/report lamtev/latex /bin/bash -c " cd report && pdflatex report.tex && bibtex report.aux && pdflatex report.tex "
+  - docker run -v $TRAVIS_BUILD_DIR:/notation_translation lamtev/latex /bin/bash -c " cd notation_translation/report && pdflatex report.tex && bibtex report.aux && pdflatex report.tex "
   - sudo chmod 777 ${TRAVIS_BUILD_DIR}/report/report.pdf
 
 deploy:
