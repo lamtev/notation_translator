@@ -2,7 +2,7 @@ package com.lamtev.cli;
 
 class Helper {
 
-    public static void printHelpInfo() {
+    static void printHelpInfo() {
         System.out.println("notation_translator v1.0");
         System.out.println();
         System.out.println("Commands:");
@@ -11,11 +11,11 @@ class Helper {
         System.out.println("-v, -version, --version  print version");
     }
 
-    public static void printVersion() {
+    static void printVersion() {
         System.out.println("1.0");
     }
 
-    public static void printInvalidArguments() {
+    static void printInvalidArguments() {
         System.out.println("Invalid arguments");
     }
 

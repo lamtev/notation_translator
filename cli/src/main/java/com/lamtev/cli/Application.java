@@ -5,24 +5,21 @@ import com.lamtev.core.StringParser;
 import com.lamtev.core.Translator;
 import com.lamtev.core.StringCompiler;
 
-//TODO notations validation
-//TODO fix RuntimeException
-
 class Application {
 
-    String[] args;
+    private String[] args;
 
     Application(String[] args) {
         this.args = args;
     }
 
-    public void run() {
+    void run() {
         switch (args.length) {
             case 1:
                 switchFirstArgument(args[0]);
                 break;
             case 3:
-                runTranslator(args);
+                translate(args);
                 break;
             default:
                 printInvalidArguments();
@@ -46,26 +43,23 @@ class Application {
         }
     }
 
-    private void runTranslator(String[] args) {
+    private void translate(String[] args) {
         try {
+            if (Integer.parseInt(args[1]) < 2 || Integer.parseInt(args[2]) > 16) {
+                printInvalidArguments();
+                return;
+            }
             StringParser stringParser = new StringParser(args[0]);
-            System.out.println("here");
             Translator translator = new Translator(
                     stringParser.integerPart(),
                     stringParser.fractionPart(),
-                    Integer.getInteger(args[1]),
-                    Integer.getInteger(args[2]));
-            System.out.println("here");
+                    Integer.parseInt(args[1]),
+                    Integer.parseInt(args[2])
+            );
             translator.translate();
-            System.out.println("here");
             StringCompiler stringCompiler = new StringCompiler(translator.integerPart(), translator.fractionPart());
-            System.out.println("here");
             System.out.println(stringCompiler.number());
-            System.out.println("here");
         } catch (RuntimeException e) {
-            System.out.println(args[0]);
-            System.out.println(args[1]);
-            System.out.println(args[2]);
             printInvalidArguments();
         }
     }

@@ -1,6 +1,6 @@
 package com.lamtev.core;
 
-public class StringValidator {
+class StringValidator {
 
     private String number;
 
@@ -8,7 +8,7 @@ public class StringValidator {
         this.number = number;
     }
 
-    public void validateString() {
+    void validateString() {
         if (hasUnallowedCharacter()) {
             throw new RuntimeException();
         }

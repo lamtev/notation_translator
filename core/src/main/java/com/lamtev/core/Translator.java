@@ -2,6 +2,9 @@ package com.lamtev.core;
 
 import java.util.ArrayList;
 
+//TODO improve algorithm
+//TODO make accuracy higher
+
 public class Translator {
 
     private ArrayList<Integer> integerPart;
