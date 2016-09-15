@@ -5,7 +5,7 @@ import static org.junit.Assert.assertEquals;
 
 public class StringCompilerTest {
 
-    private static final String EXPECTED_NUMBER_1 = "354556,10422532";
+    private static final String EXPECTED_NUMBER = "354556,10422532";
 
     @Test
     public void testNumber() {
@@ -13,7 +13,7 @@ public class StringCompilerTest {
                 TranslatorTest.EXPECTED_INTEGER_PART_1,
                 TranslatorTest.EXPECTED_FRACTION_PART_1
         );
-        assertEquals(EXPECTED_NUMBER_1, stringCompiler.number());
+        assertEquals(EXPECTED_NUMBER, stringCompiler.number());
     }
 
 }
