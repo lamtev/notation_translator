@@ -5,12 +5,12 @@ import static org.junit.Assert.assertEquals;
 
 public class StringCompilerTest {
 
-    private static final String EXPECTED_NUMBER_1 = "FA54,27D";
+    private static final String EXPECTED_NUMBER_1 = "10212,00122";
     private static final String EXPECTED_NUMBER_2 = "80,0BA912C5";
 
     @Test
     public void testNumber1() {
-        StringCompiler stringCompiler = new StringCompiler(TranslatorTest.INTEGER_PART_1, TranslatorTest.FRACTION_PART_1);
+        StringCompiler stringCompiler = new StringCompiler(TranslatorTest.INTEGER_PART_2, TranslatorTest.FRACTION_PART_2);
         assertEquals(EXPECTED_NUMBER_1, stringCompiler.number());
     }
 
