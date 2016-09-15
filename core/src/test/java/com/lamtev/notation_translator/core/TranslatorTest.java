@@ -37,13 +37,13 @@ public class TranslatorTest {
     }
 
     //Data for 1-st test
-    private static final ArrayList<Integer> INTEGER_PART_1 = new ArrayList<Integer>() {{
+    static final ArrayList<Integer> INTEGER_PART_1 = new ArrayList<Integer>() {{
         add(15);
         add(10);
         add(5);
         add(4);
     }};
-    private static final ArrayList<Integer> FRACTION_PART_1 = new ArrayList<Integer>() {{
+    static final ArrayList<Integer> FRACTION_PART_1 = new ArrayList<Integer>() {{
         add(2);
         add(7);
         add(13);
@@ -68,25 +68,25 @@ public class TranslatorTest {
     }};
 
     //Data for 2-nd test
-    static final ArrayList<Integer> INTEGER_PART_2 = new ArrayList<Integer>() {{
+    private static final ArrayList<Integer> INTEGER_PART_2 = new ArrayList<Integer>() {{
         add(1);
         add(0);
         add(2);
         add(1);
         add(2);
     }};
-    static final ArrayList<Integer> FRACTION_PART_2 = new ArrayList<Integer>() {{
+    private static final ArrayList<Integer> FRACTION_PART_2 = new ArrayList<Integer>() {{
         add(0);
         add(0);
         add(1);
         add(2);
         add(2);
     }};
-    static final ArrayList<Integer> EXPECTED_INTEGER_PART_2 = new ArrayList<Integer>() {{
+    private static final ArrayList<Integer> EXPECTED_INTEGER_PART_2 = new ArrayList<Integer>() {{
         add(8);
         add(0);
     }};
-    static final ArrayList<Integer> EXPECTED_FRACTION_PART_2 = new ArrayList<Integer>() {{
+    private static final ArrayList<Integer> EXPECTED_FRACTION_PART_2 = new ArrayList<Integer>() {{
         add(0);
         add(11);
         add(10);
