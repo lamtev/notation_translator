@@ -22,7 +22,7 @@ script:
   - sudo chmod 777 ${TRAVIS_BUILD_DIR}/report/report.pdf
 
 after_success:
-  - sudo codecov
+  - codecov
   
 deploy:
   provider: releases
