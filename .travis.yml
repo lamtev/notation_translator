@@ -20,6 +20,9 @@ script:
   - docker run -v $TRAVIS_BUILD_DIR:/notation_translation lamtev/latex /bin/bash -c " cd notation_translation/report && pdflatex report.tex && pdflatex report.tex "
   - sudo chmod 777 ${TRAVIS_BUILD_DIR}/report/report.pdf
 
+after_success:
+  - sudo bash <(curl -s https://codecov.io/bash)
+  
 deploy:
   provider: releases
   api_key: "$GITHUB_DEPLOY_TOKEN"
