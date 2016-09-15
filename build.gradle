@@ -19,11 +19,11 @@ allprojects {
         reportLevel = "high"
         ignoreFailures = true
     }
+}
 
-    apply plugin: 'jacoco'
-    jacocoTestReport {
-        reports {
-            xml.enabled true
-        }
+apply plugin: 'jacoco'
+jacocoTestReport {
+    reports {
+        xml.enabled true
     }
 }
