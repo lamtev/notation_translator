@@ -2,6 +2,7 @@ package com.lamtev.notation_translator.core;
 
 import java.util.ArrayList;
 
+//TODO fix algorithm
 //TODO improve algorithm
 //TODO make accuracy higher
 
