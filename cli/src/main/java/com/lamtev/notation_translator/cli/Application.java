@@ -26,6 +26,7 @@ class Application {
                 break;
             default:
                 Helper.printInvalidArguments();
+                Helper.printHelpInfo();
         }
     }
 
@@ -43,17 +44,19 @@ class Application {
                 break;
             default:
                 Helper.printInvalidArguments();
+                Helper.printHelpInfo();
         }
     }
 
     private void translate(String[] args) {
         try {
             int accuracy = args.length == 3 ? 8 : Integer.parseInt(args[3]);
-            if (Integer.parseInt(args[1]) < 2 || Integer.parseInt(args[2]) > 16) {
+            if (Integer.parseInt(args[1]) < 2 || Integer.parseInt(args[2]) > 36) {
                 Helper.printInvalidArguments();
+                System.out.println("Supported notations: 2 - 36");
                 return;
             }
-            StringParser stringParser = new StringParser(args[0]);
+            StringParser stringParser = new StringParser(args[0], Integer.parseInt(args[1]));
             Translator translator = new Translator(
                     stringParser.integerPart(),
                     stringParser.fractionPart(),

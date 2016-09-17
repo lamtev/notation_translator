@@ -6,7 +6,7 @@ import static org.junit.Assert.assertEquals;
 
 public class StringParserTest {
 
-    private static final StringParser STRING_PARSER = new StringParser("12A90,FF01D");
+    private static final StringParser STRING_PARSER = new StringParser("12A90,FF01D", 16);
 
     @Test
     public void testIntegerPart() {

@@ -9,7 +9,7 @@ public class StringParser {
     private String number;
     private ArrayList<Integer> integerPart;
     private ArrayList<Integer> fractionPart;
-    private static final Map<Character, Integer> TABLE_OF_DIGITS = new HashMap<Character, Integer>() {{
+    static final Map<Character, Integer> TABLE_OF_DIGITS = new HashMap<Character, Integer>() {{
         put('0', 0);
         put('1', 1);
         put('2', 2);
@@ -26,11 +26,31 @@ public class StringParser {
         put('D', 13);
         put('E', 14);
         put('F', 15);
+        put('G', 16);
+        put('H', 17);
+        put('I', 18);
+        put('J', 19);
+        put('K', 20);
+        put('L', 21);
+        put('M', 22);
+        put('N', 23);
+        put('O', 24);
+        put('P', 25);
+        put('Q', 26);
+        put('R', 27);
+        put('S', 28);
+        put('T', 29);
+        put('U', 30);
+        put('V', 31);
+        put('W', 32);
+        put('X', 33);
+        put('Y', 34);
+        put('Z', 35);
     }};
 
-    public StringParser(String number) {
+    public StringParser(String number, int originalNotation) {
         this.number = number;
-        StringValidator stringValidator = new StringValidator(number);
+        StringValidator stringValidator = new StringValidator(number, originalNotation);
         stringValidator.validateString();
         parseIntegerPart();
         parseFractionPart();
