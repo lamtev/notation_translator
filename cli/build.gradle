@@ -1,6 +1,6 @@
 apply plugin: 'application'
 
-mainClassName = 'com.lamtev.notation_translation.cli.Utility'
+mainClassName = 'com.lamtev.notation_translator.cli.Utility'
 
 dependencies {
     compile project(':core')
