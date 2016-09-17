@@ -1,10 +1,11 @@
 package com.lamtev.notation_translator.core;
 
+import java.math.BigDecimal;
+import java.math.BigInteger;
+import java.math.RoundingMode;
 import java.util.ArrayList;
 
-//TODO fix algorithm
-//TODO improve algorithm
-//TODO make accuracy higher
+//TODO set accuracy as parameter
 
 public class Translator {
 
@@ -12,16 +13,14 @@ public class Translator {
     private ArrayList<Integer> fractionPart;
     private int originalNotation;
     private int newNotation;
-    private Integer decIntegerPart = 0;
-    private Integer decFractionPart = 0;
+    private BigInteger decIntegerPart;
+    private BigDecimal floatDecFractionPart;
 
     public Translator(ArrayList<Integer> integerPart, ArrayList<Integer> fractionPart, int originalNotation, int newNotation) {
         this.integerPart = integerPart;
         this.fractionPart = fractionPart;
         this.originalNotation = originalNotation;
         this.newNotation = newNotation;
-        calculateDecIntegerPart();
-        calculateDecFractionPart();
     }
 
     public ArrayList<Integer> integerPart() {
@@ -37,39 +36,52 @@ public class Translator {
         translateFractionPart();
     }
 
-   private void translateIntegerPart() {
-       integerPart.clear();
-       while (decIntegerPart != 0) {
-           integerPart.add(0, decIntegerPart % newNotation);
-           decIntegerPart /= newNotation;
+    private void translateIntegerPart() {
+        determineDecIntegerPart();
+        integerPart.clear();
+        while (!decIntegerPart.equals(BigInteger.valueOf(0))) {
+           integerPart.add(0, decIntegerPart.mod(BigInteger.valueOf(newNotation)).intValue());
+           decIntegerPart = decIntegerPart.divide(BigInteger.valueOf(newNotation));
        }
     }
 
-    private void calculateDecIntegerPart() {
+    private void determineDecIntegerPart() {
+        decIntegerPart = new BigInteger("0");
         for (Integer x : integerPart) {
-            decIntegerPart *= originalNotation;
-            decIntegerPart += x;
+            decIntegerPart = decIntegerPart.multiply(BigInteger.valueOf(originalNotation));
+            decIntegerPart = decIntegerPart.add(BigInteger.valueOf(x));
         }
     }
 
     private void translateFractionPart() {
+        determineDecFractionPart();
         fractionPart.clear();
-        int iteration = 0;
-        while (iteration < 8) {
-            decFractionPart *= newNotation;
-            fractionPart.add(decFractionPart / (int) Math.pow(10, 8));
-            decFractionPart %= (int) Math.pow(10, 8);
-            ++iteration;
+        for (int i = 0; i < 8; ++i) {
+            Integer div = floatDecFractionPart.multiply(BigDecimal.valueOf(newNotation)).intValue();
+            System.out.println(div);
+            fractionPart.add(div);
+            floatDecFractionPart = floatDecFractionPart.multiply(
+                    BigDecimal.valueOf(newNotation)).subtract(BigDecimal.valueOf(div)
+                    );
         }
     }
 
-    private void calculateDecFractionPart() {
+    private void determineDecFractionPart() {
+        floatDecFractionPart = new BigDecimal("0.0");
         for (Integer x : fractionPart) {
-            decFractionPart *= originalNotation;
-            decFractionPart += x;
+            floatDecFractionPart = floatDecFractionPart.multiply(BigDecimal.valueOf(originalNotation));
+            floatDecFractionPart = floatDecFractionPart.add(BigDecimal.valueOf(x));
         }
-        Double fraction = decFractionPart / Math.pow(originalNotation, fractionPart.size());
-        decFractionPart = ((Double) (fraction * Math.pow(10, 8))).intValue();
+        BigDecimal divider = power(originalNotation, fractionPart.size());
+        floatDecFractionPart = floatDecFractionPart.divide(divider, 50, RoundingMode.HALF_UP);
+    }
+
+    private BigDecimal power(Integer number, Integer degree) {
+        BigDecimal result = new BigDecimal("1");
+        for (int i = 0; i < degree; ++ i) {
+            result = result.multiply(BigDecimal.valueOf(number));
+        }
+        return result;
     }
 
 }

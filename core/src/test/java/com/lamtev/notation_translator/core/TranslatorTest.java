@@ -94,7 +94,7 @@ public class TranslatorTest {
         add(1);
         add(2);
         add(12);
-        add(5);
+        add(12);
     }};
 
     //Data for 3-rd test

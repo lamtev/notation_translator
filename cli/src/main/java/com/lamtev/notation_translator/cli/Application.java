@@ -60,6 +60,7 @@ class Application {
             System.out.println(stringCompiler.number());
         } catch (RuntimeException e) {
             Helper.printInvalidArguments();
+            System.out.println(e.getMessage());
         }
     }
 
