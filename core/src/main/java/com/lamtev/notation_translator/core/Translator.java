@@ -80,7 +80,7 @@ public class Translator {
             floatDecFractionPart = floatDecFractionPart.add(BigDecimal.valueOf(x));
         }
         BigDecimal divider = power(originalNotation, fractionPart.size());
-        floatDecFractionPart = floatDecFractionPart.divide(divider, 50, RoundingMode.HALF_UP);
+        floatDecFractionPart = floatDecFractionPart.divide(divider, accuracy*36, RoundingMode.HALF_UP);
     }
 
     private BigDecimal power(Integer number, Integer degree) {
