@@ -20,7 +20,7 @@ class Helper {
     }
 
     static void printVersion() {
-        System.out.println("1.2");
+        System.out.println("1.3");
     }
 
     static void printInvalidArguments() {
