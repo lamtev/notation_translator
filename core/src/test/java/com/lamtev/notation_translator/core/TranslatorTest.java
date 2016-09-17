@@ -8,7 +8,7 @@ public class TranslatorTest {
 
     @Test
     public void testTranslate1() {
-        Translator translator = new Translator(INTEGER_PART_1, FRACTION_PART_1, 16, 7);
+        Translator translator = new Translator(INTEGER_PART_1, FRACTION_PART_1, 16, 7, 8);
         assertEquals(INTEGER_PART_1, translator.integerPart());
         assertEquals(FRACTION_PART_1, translator.fractionPart());
         translator.translate();
@@ -18,7 +18,7 @@ public class TranslatorTest {
 
     @Test
     public void testTranslate2() {
-        Translator translator = new Translator(INTEGER_PART_2, FRACTION_PART_2, 3, 13);
+        Translator translator = new Translator(INTEGER_PART_2, FRACTION_PART_2, 3, 13, 8);
         assertEquals(INTEGER_PART_2, translator.integerPart());
         assertEquals(FRACTION_PART_2, translator.fractionPart());
         translator.translate();
@@ -28,7 +28,7 @@ public class TranslatorTest {
 
     @Test
     public void testTranslate3() {
-        Translator translator = new Translator(INTEGER_PART_3, FRACTION_PART_3, 4, 11);
+        Translator translator = new Translator(INTEGER_PART_3, FRACTION_PART_3, 4, 11, 8);
         assertEquals(INTEGER_PART_3, translator.integerPart());
         assertEquals(FRACTION_PART_3, translator.fractionPart());
         translator.translate();

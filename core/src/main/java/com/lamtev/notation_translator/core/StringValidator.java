@@ -9,7 +9,7 @@ class StringValidator {
     }
 
     void validateString() {
-        if (hasUnallowedCharacter()) {
+        if (hasUnallowedCharacter() || number.indexOf(',') == -1) {
             throw new RuntimeException();
         }
     }

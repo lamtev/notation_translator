@@ -14,10 +14,14 @@ class Application {
 
     void run() {
         switch (args.length) {
+            case 0:
+                Helper.printHelpInfo();
+                break;
             case 1:
                 switchFirstArgument(args[0]);
                 break;
             case 3:
+            case 4:
                 translate(args);
                 break;
             default:
@@ -44,6 +48,7 @@ class Application {
 
     private void translate(String[] args) {
         try {
+            int accuracy = args.length == 3 ? 8 : Integer.parseInt(args[3]);
             if (Integer.parseInt(args[1]) < 2 || Integer.parseInt(args[2]) > 16) {
                 Helper.printInvalidArguments();
                 return;
@@ -53,14 +58,15 @@ class Application {
                     stringParser.integerPart(),
                     stringParser.fractionPart(),
                     Integer.parseInt(args[1]),
-                    Integer.parseInt(args[2])
+                    Integer.parseInt(args[2]),
+                    accuracy
             );
             translator.translate();
             StringCompiler stringCompiler = new StringCompiler(translator.integerPart(), translator.fractionPart());
             System.out.println(stringCompiler.number());
         } catch (RuntimeException e) {
             Helper.printInvalidArguments();
-            System.out.println(e.getMessage());
+            Helper.printHelpInfo();
         }
     }
 

@@ -5,22 +5,26 @@ import java.math.BigInteger;
 import java.math.RoundingMode;
 import java.util.ArrayList;
 
-//TODO set accuracy as parameter
-
 public class Translator {
 
     private ArrayList<Integer> integerPart;
     private ArrayList<Integer> fractionPart;
     private int originalNotation;
     private int newNotation;
+    private int accuracy;
     private BigInteger decIntegerPart;
     private BigDecimal floatDecFractionPart;
 
-    public Translator(ArrayList<Integer> integerPart, ArrayList<Integer> fractionPart, int originalNotation, int newNotation) {
+    public Translator(ArrayList<Integer> integerPart,
+                      ArrayList<Integer> fractionPart,
+                      int originalNotation,
+                      int newNotation,
+                      int accuracy) {
         this.integerPart = integerPart;
         this.fractionPart = fractionPart;
         this.originalNotation = originalNotation;
         this.newNotation = newNotation;
+        this.accuracy = accuracy;
     }
 
     public ArrayList<Integer> integerPart() {
@@ -39,6 +43,10 @@ public class Translator {
     private void translateIntegerPart() {
         determineDecIntegerPart();
         integerPart.clear();
+        if (decIntegerPart.equals(BigInteger.valueOf(0))) {
+            integerPart.add(0);
+            return;
+        }
         while (!decIntegerPart.equals(BigInteger.valueOf(0))) {
            integerPart.add(0, decIntegerPart.mod(BigInteger.valueOf(newNotation)).intValue());
            decIntegerPart = decIntegerPart.divide(BigInteger.valueOf(newNotation));
@@ -56,9 +64,8 @@ public class Translator {
     private void translateFractionPart() {
         determineDecFractionPart();
         fractionPart.clear();
-        for (int i = 0; i < 8; ++i) {
+        for (int i = 0; i < accuracy; ++i) {
             Integer div = floatDecFractionPart.multiply(BigDecimal.valueOf(newNotation)).intValue();
-            System.out.println(div);
             fractionPart.add(div);
             floatDecFractionPart = floatDecFractionPart.multiply(
                     BigDecimal.valueOf(newNotation)).subtract(BigDecimal.valueOf(div)
