@@ -20,10 +20,3 @@ allprojects {
         ignoreFailures = true
     }
 }
-
-apply plugin: 'jacoco'
-jacocoTestReport {
-    reports {
-        xml.enabled true
-    }
-}
