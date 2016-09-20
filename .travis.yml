@@ -15,7 +15,7 @@ install:
   - docker pull lamtev/latex
 
 script:
-  - docker run -v $TRAVIS_BUILD_DIR:/notation_translation lamtev/java /bin/bash -c " cd notation_translation && gradle build "
+  - docker run -v $TRAVIS_BUILD_DIR:/notation_translation lamtev/java /bin/bash -c " cd notation_translation && cloc --by-file --xml --out=cloc.xml * && gradle build "
   - sudo chmod 777 ${TRAVIS_BUILD_DIR}/cli/build/distributions/cli-1.0-SNAPSHOT.tar
   - sudo chmod 777 ${TRAVIS_BUILD_DIR}/cli/build/distributions/cli-1.0-SNAPSHOT.zip
   - docker run -v $TRAVIS_BUILD_DIR:/notation_translation lamtev/latex /bin/bash -c " cd notation_translation/report && pdflatex report.tex && pdflatex report.tex "
